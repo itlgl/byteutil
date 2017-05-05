@@ -4,6 +4,28 @@
 
 ## 如何使用
 
+maven配置：
+
+```maven
+<repositories>
+  <repository>
+   <id>ligl-mvn-repo</id>
+   <url>https://raw.githubusercontent.com/liguanliang2014/mvn-repo/master/</url>
+  </repository>
+</repositories>
+  
+<dependencies>
+	<dependency>
+		<groupId>com.ligl</groupId>
+		<artifactId>byteutil</artifactId>
+		<version>0.0.1</version>
+		<scope>test</scope>
+	</dependency>
+</dependencies>
+```
+
+gradle配置：
+
 ```gradle
 repositories {
     maven { url 'https://raw.githubusercontent.com/liguanliang2014/mvn-repo/master'}
