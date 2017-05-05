@@ -10,7 +10,7 @@ maven配置：
 <repositories>
     <repository>
     <id>ligl-mvn-repo</id>
-    <url>https://raw.githubusercontent.com/liguanliang2014/mvn-repo/master/</url>
+    <url>https://raw.githubusercontent.com/ligl01/mvn-repo/master/</url>
     </repository>
 </repositories>
   
@@ -28,7 +28,7 @@ gradle配置：
 
 ```gradle
 repositories {
-    maven { url 'https://raw.githubusercontent.com/liguanliang2014/mvn-repo/master'}
+    maven { url 'https://raw.githubusercontent.com/ligl01/mvn-repo/master'}
 }
 
 dependencies {
