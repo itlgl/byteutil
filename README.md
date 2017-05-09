@@ -59,6 +59,11 @@ android {
 }
 ```
 
+## 如何打包
+
+项目使用Eclipse编译，在`pom.xml`上右键，选择`Run As->Maven build...`，在`Goals`里输入`deploy`即可打包
+
+默认maven包的存放目录为`file:D:/github/mvn-repo/`，可以在`pom.xml`文件中修改打包位置
 
 ## 关于我
 一个Android开发者

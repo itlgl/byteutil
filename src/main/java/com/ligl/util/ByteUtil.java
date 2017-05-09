@@ -15,14 +15,24 @@ public class ByteUtil {
 		return builder.toString();
 	}
 
+	private static final String HEX_STR = "0123456789abcdefABCDEF";
+
 	public static byte[] fromHex(String hex) {
 		if (hex == null || hex.length() == 0) {
 			return null;
 		}
-		int strLength = hex.length();
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0, len = hex.length(); i < len; i++) {
+			char c = hex.charAt(i);
+			if (HEX_STR.indexOf(c) != -1) {
+				builder.append(c);
+			}
+		}
+		String hexSrc = builder.toString();
+		int strLength = hexSrc.length();
 		byte[] result = new byte[strLength / 2];
 		for (int i = 0, len = strLength / 2; i < len; i++) {
-			result[i] = (byte) Integer.parseInt(hex.substring(i * 2, i * 2 + 2), 16);
+			result[i] = (byte) Integer.parseInt(hexSrc.substring(i * 2, i * 2 + 2), 16);
 		}
 		return result;
 	}

@@ -1,7 +1,5 @@
 package com.ligl.util;
 
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,6 +18,10 @@ public class ByteUtilTest {
 		byte[] bs = new byte[]{0x01, 0x0a, (byte)0xaa, (byte)0xbb, (byte)0xff};
 		String hex = "010aaabbff";
 		byte[] bResult = ByteUtil.fromHex(hex);
+		Assert.assertArrayEquals(bs, bResult);
+		
+		String hex2 = "01 0a	a yyuu abbff";
+		bResult = ByteUtil.fromHex(hex);
 		Assert.assertArrayEquals(bs, bResult);
 	}
 	
