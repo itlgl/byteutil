@@ -36,7 +36,9 @@ dependencies {
 }
 ```
 
-如果运行中出现问题：
+------------
+
+Android Studio编译运行中出现问题：
 
 ```
 Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug'.
@@ -51,7 +53,8 @@ Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug
 android {
 
     packagingOptions {
-        exclude 'META-INF/*'
+        exclude 'META-INF/maven/com.ligl/byteutil/pom.properties'
+        exclude 'META-INF/maven/com.ligl/byteutil/pom.xml'
     }
 }
 ```
