@@ -11,6 +11,14 @@ public class ByteUtilTest {
 		String hex = "010aaabbff";
 		String hexResult = ByteUtil.toHex(bs);
 		Assert.assertEquals(hex, hexResult);
+		
+		String hex2 = "bbff";
+		String hexResult2 = ByteUtil.toHex(bs, bs.length - 2);
+		Assert.assertEquals(hex2, hexResult2);
+		
+		String hex3 = "aabb";
+		String hexResult3 = ByteUtil.toHex(bs, bs.length - 3, bs.length - 1);
+		Assert.assertEquals(hex3, hexResult3);
 	}
 	
 	@Test
@@ -21,7 +29,7 @@ public class ByteUtilTest {
 		Assert.assertArrayEquals(bs, bResult);
 		
 		String hex2 = "01 0a	a yyuu abbff";
-		bResult = ByteUtil.fromHex(hex);
+		bResult = ByteUtil.fromHex(hex2);
 		Assert.assertArrayEquals(bs, bResult);
 	}
 	
@@ -38,7 +46,6 @@ public class ByteUtilTest {
 		short s = (short) 0xabcd;
 		byte[] b = new byte[]{(byte) 0xab, (byte) 0xcd};
 		short ret = ByteUtil.toShort(b[0], b[1]);
-		System.out.println("short ret=" + Integer.toHexString(ret));
 		Assert.assertEquals(s, ret);
 	}
 	
@@ -55,7 +62,6 @@ public class ByteUtilTest {
 		int i = 0xabcdefab;
 		byte[] b = new byte[]{(byte) 0xab,(byte) 0xcd,(byte) 0xef,(byte) 0xab};
 		int ret = ByteUtil.toInt(b[0],b[1],b[2],b[3]);
-		System.out.println(Integer.toHexString(ret));
 		Assert.assertEquals(i, ret);
 	}
 	

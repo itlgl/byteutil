@@ -4,6 +4,14 @@ import java.io.ByteArrayOutputStream;
 
 public class ByteUtil {
 
+	/**
+	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"<br/>
+	 * 默认转换出来的字符串全部为小写
+	 * 
+	 * @param src
+	 *            byte数组
+	 * @return
+	 */
 	public static String toHex(byte[] src) {
 		if (src == null || src.length == 0) {
 			return null;
@@ -15,8 +23,40 @@ public class ByteUtil {
 		return builder.toString();
 	}
 
+	public static String toHex(byte[] src, int start) {
+		if (src == null || src.length == 0) {
+			return null;
+		}
+		return toHex(src, start, src.length);
+	}
+
+	public static String toHex(byte[] src, int start, int end) {
+		if (src == null || src.length == 0) {
+			return null;
+		}
+		if (start > end) {
+			throw new IllegalArgumentException();
+		}
+		if (start < 0 || end > src.length) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		StringBuilder builder = new StringBuilder();
+		for (int i = start; i < end; i++) {
+			builder.append(String.format("%02x", src[i]));
+		}
+		return builder.toString();
+	}
+
 	private static final String HEX_STR = "0123456789abcdefABCDEF";
 
+	/**
+	 * 将16进制的字符串转换为byte[]，如"11aabbcc"转换成byte[]{0x11, 0xaa, 0xbb, 0xcc}<br/>
+	 * 函数会过滤字符串中不合法的字符
+	 * 
+	 * @param hex
+	 *            16进制的字符串，不区分大小写
+	 * @return
+	 */
 	public static byte[] fromHex(String hex) {
 		if (hex == null || hex.length() == 0) {
 			return null;
@@ -38,10 +78,12 @@ public class ByteUtil {
 	}
 
 	/**
-	 * 将short转成2个字节byte[]
+	 * 将short转成2个字节byte[]<br/>
+	 * 如(short)0xabcd转换成byte[]{0xab, 0xcd}
 	 * 
 	 * @param s
-	 * @return
+	 *            short数据
+	 * @return 转换后的两个字节byte数组
 	 */
 	public static byte[] fromShort(short s) {
 		byte[] ret = new byte[2];
@@ -54,7 +96,6 @@ public class ByteUtil {
 		short s1 = (short) ((b1 & 0xff) << 8);
 		short s2 = (short) (b2 & 0xff);
 		short ret = (short) (s1 | s2);
-		System.out.println(Integer.toHexString((b1 << 8) & 0xff00));
 		return ret;
 	}
 
