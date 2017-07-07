@@ -31,7 +31,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.ligl:byteutil:0.0.1'
+    compile 'com.ligl:byteutil:0.0.3'
 }
 ```
 
