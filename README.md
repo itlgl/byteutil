@@ -19,7 +19,6 @@ maven配置：
         <groupId>com.ligl</groupId>
         <artifactId>byteutil</artifactId>
         <version>0.0.3</version>
-        <scope>test</scope>
     </dependency>
 </dependencies>
 ```
