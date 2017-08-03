@@ -47,6 +47,26 @@ public class ByteUtil {
 		return builder.toString();
 	}
 
+	/**
+	 * 将一个int值的前byteLength个字节转换为十六进制的字符，比如0xab转换成"ab"
+	 * @param src 要转换的int值
+	 * @param byteLength 转换前几个字节，范围[1,4]，否则会返回null值
+	 * @return
+	 */
+	public static String toHex(int src, int byteLength) {
+		switch(byteLength) {
+		case 1:
+			return String.format("%02x", src & 0xff);
+		case 2:
+			return String.format("%04x", src & 0xffff);
+		case 3:
+			return String.format("%06x", src & 0xffffff);
+		case 4:
+			return String.format("%08x", src & 0xffffffff);
+		}
+		return null;
+	}
+	
 	private static final String HEX_STR = "0123456789abcdefABCDEF";
 
 	/**

@@ -19,6 +19,26 @@ public class ByteUtilTest {
 		String hex3 = "aabb";
 		String hexResult3 = ByteUtil.toHex(bs, bs.length - 3, bs.length - 1);
 		Assert.assertEquals(hex3, hexResult3);
+		
+		int value4 = 0xab;
+		String hex4 = "ab";
+		String hexResult4 = ByteUtil.toHex(value4, 1);
+		Assert.assertEquals(hex4, hexResult4);
+		
+		int value5 = 0xabcd;
+		String hex5 = "abcd";
+		String hexResult5 = ByteUtil.toHex(value5, 2);
+		Assert.assertEquals(hex5, hexResult5);
+		
+		int value6 = 0xabcdef;
+		String hex6 = "abcdef";
+		String hexResult6 = ByteUtil.toHex(value6, 3);
+		Assert.assertEquals(hex6, hexResult6);
+		
+		int value7 = 0xabcdefab;
+		String hex7 = "abcdefab";
+		String hexResult7 = ByteUtil.toHex(value7, 4);
+		Assert.assertEquals(hex7, hexResult7);
 	}
 	
 	@Test
