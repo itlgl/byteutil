@@ -3,6 +3,8 @@ package com.ligl.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.itlgl.util.ByteUtil;
+
 public class ByteUtilTest {
 	
 	@Test

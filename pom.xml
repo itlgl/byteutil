@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ligl</groupId>
+	<groupId>com.itlgl</groupId>
 	<artifactId>byteutil</artifactId>
 	<version>0.0.4</version>
 	<packaging>jar</packaging>
@@ -44,10 +44,10 @@
 		</plugins>
 	</build>
 	
-	<distributionManagement>
+	<!-- <distributionManagement>
 		<repository>
 			<id>byteutil</id>
 			<url>file:D:/github/mvn-repo/</url>
 		</repository>
-	</distributionManagement>
+	</distributionManagement> -->
 </project>
