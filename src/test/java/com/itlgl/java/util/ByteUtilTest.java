@@ -1,9 +1,9 @@
-package com.ligl.util;
+package com.itlgl.java.util;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.itlgl.util.ByteUtil;
+import com.itlgl.java.util.ByteUtil;
 
 public class ByteUtilTest {
 	

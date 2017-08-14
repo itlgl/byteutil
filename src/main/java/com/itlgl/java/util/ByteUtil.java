@@ -1,4 +1,4 @@
-package com.itlgl.util;
+package com.itlgl.java.util;
 
 import java.io.ByteArrayOutputStream;
 

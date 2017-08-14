@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>byteutil</name>
-	<url>http://www.liguanliang.com</url>
+	<url>https://github.com/itlgl/byteutil</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
