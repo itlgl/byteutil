@@ -67,15 +67,8 @@
 	
 	<distributionManagement>
         <repository>
-            <id>byteutil</id>
-            <url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1</url>
+            <id>itlgl</id>
+            <url>https://api.bintray.com/maven/itlgl/maven/byteutil/;publish=1</url>
         </repository>
     </distributionManagement>
-	
-	<!-- <distributionManagement>
-		<repository>
-			<id>byteutil</id>
-			<url>file:D:/github/mvn-repo/</url>
-		</repository>
-	</distributionManagement> -->
 </project>
