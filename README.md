@@ -4,45 +4,30 @@
 
 ## 依赖配置
 
-** maven配置： **
+** maven配置 **
 
 ```maven
-<repositories>
-    <repository>
-    <id>ligl-mvn-repo</id>
-    <url>https://raw.githubusercontent.com/ligl01/mvn-repo/master/</url>
-    </repository>
-</repositories>
-  
-<dependencies>
-    <dependency>
-        <groupId>com.ligl</groupId>
-        <artifactId>byteutil</artifactId>
-        <version>0.0.4</version>
-    </dependency>
-</dependencies>
+<dependency>
+  <groupId>com.itlgl</groupId>
+  <artifactId>byteutil</artifactId>
+  <version>0.0.4</version>
+</dependency>
 ```
 
-** gradle配置： **
+** gradle配置 **
 
 ```gradle
-repositories {
-    maven { url 'https://raw.githubusercontent.com/ligl01/mvn-repo/master'}
-}
-
-dependencies {
-    compile 'com.ligl:byteutil:0.0.3'
-}
+compile 'com.itlgl:byteutil:0.0.4'
 ```
 
-** Android Studio中使用额外增加配置： **
+** Android Studio中额外增加配置 **
 
 ```gradle
 android {
 
     packagingOptions {
-        exclude 'META-INF/maven/com.ligl/byteutil/pom.properties'
-        exclude 'META-INF/maven/com.ligl/byteutil/pom.xml'
+        exclude 'META-INF/maven/com.itlgl/byteutil/pom.properties'
+        exclude 'META-INF/maven/com.itlgl/byteutil/pom.xml'
     }
 }
 ```
@@ -60,11 +45,17 @@ Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug
 
 项目使用Eclipse编译，在`pom.xml`上右键，选择`Run As->Maven build...`，在`Goals`里输入`deploy`即可打包
 
-默认maven包的存放目录为`file:D:/github/mvn-repo/`，可以在`pom.xml`文件中修改打包位置
+## jcenter配置说明
+
+1. 在项目的pom.xml文件中增加build plugins的信息，用来生成源码和test-jar
+2. 将pom.xml文件中的部署位置修改为bintray的url
+3. 在`<userdir>/.m2/`文件目录下增加一个settings.xml的文件，用于设置当前用户的环境配置，书写方式可以参考项目中的settings.xml。需要注意的是，pom.xml中`<distributionManagement>`标签下的`id`值要和setting.xml中`<server>`下的id值相同
+4. 具体参考项目文件和[bintray-examples](https://github.com/bintray/bintray-examples)
 
 ## 关于我
+
 一个Android开发者
 
 ## 联系我
 
-邮箱: ligl6688@gmail.com
+email: ligl6688@gmail.com

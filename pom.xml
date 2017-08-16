@@ -67,7 +67,7 @@
 	
 	<distributionManagement>
         <repository>
-            <id>itlgl</id>
+            <id>bintray-repo-maven</id>
             <url>https://api.bintray.com/maven/itlgl/maven/byteutil/;publish=1</url>
         </repository>
     </distributionManagement>
