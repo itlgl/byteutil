@@ -7,10 +7,18 @@
 ** maven配置 **
 
 ```maven
+<!-- jcenter仓库地址，默认maven没有这个仓库地址 -->
+<repositories>
+    <repository>
+        <id>jcenter</id>
+        <url>http://jcenter.bintray.com/</url>
+    </repository>
+</repositories>
+
 <dependency>
-  <groupId>com.itlgl</groupId>
-  <artifactId>byteutil</artifactId>
-  <version>0.0.4</version>
+    <groupId>com.itlgl</groupId>
+    <artifactId>byteutil</artifactId>
+    <version>0.0.4</version>
 </dependency>
 ```
 
