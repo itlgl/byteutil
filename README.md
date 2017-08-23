@@ -4,7 +4,7 @@
 
 ## 依赖配置
 
-** maven配置 **
+### maven配置
 
 ```maven
 <!-- jcenter仓库地址，默认maven没有这个仓库地址 -->
@@ -22,13 +22,13 @@
 </dependency>
 ```
 
-** gradle配置 **
+### gradle配置
 
 ```gradle
 compile 'com.itlgl:byteutil:0.0.4'
 ```
 
-** Android Studio中额外增加配置 **
+Android Studio中需要额外增加配置
 
 ```gradle
 android {
@@ -48,6 +48,10 @@ Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug
 	File1: C:\Users\ligl01\.gradle\caches\modules-2\files-2.1\com.ligl\byteutil\0.0.1\48d08a5499328c65e87fcbd1f01fdd6ad686eca2\byteutil-0.0.1.jar
 	File2: C:\Users\ligl01\.gradle\caches\modules-2\files-2.1\com.ligl\byteutil\0.0.1\48d08a5499328c65e87fcbd1f01fdd6ad686eca2\byteutil-0.0.1.jar
 ```
+
+### 直接下载
+
+
 
 ## 如何打包
 
