@@ -3,7 +3,6 @@
 有关byte数据处理的工具类
 
 [![Build Status](https://www.travis-ci.org/itlgl/byteutil.svg?branch=master)](https://www.travis-ci.org/itlgl/byteutil)
-[![Coverage Status](https://coveralls.io/repos/github/itlgl/byteutil/badge.svg?branch=master)](https://coveralls.io/github/itlgl/byteutil?branch=master)
 
 ## 依赖配置
 
