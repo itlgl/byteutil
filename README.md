@@ -45,7 +45,7 @@ Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug
 
 ### 直接下载
 
-
+[byteutil-0.0.5.jar](http://search.maven.org/remotecontent?filepath=com/itlgl/byteutil/0.0.5/byteutil-0.0.5.jar)
 
 ## 如何打包上传到中央仓库
 
