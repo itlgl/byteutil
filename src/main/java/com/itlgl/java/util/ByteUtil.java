@@ -5,12 +5,12 @@ import java.io.ByteArrayOutputStream;
 public class ByteUtil {
 
 	/**
-	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"<br/>
+	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"
 	 * 默认转换出来的字符串全部为小写
 	 * 
 	 * @param src
 	 *            byte数组
-	 * @return
+	 * @return hex字符串
 	 */
 	public static String toHex(byte[] src) {
 		if (src == null || src.length == 0) {
@@ -23,6 +23,16 @@ public class ByteUtil {
 		return builder.toString();
 	}
 
+	/**
+	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"
+	 * 默认转换出来的字符串全部为小写 从开始位置到byte数组的结尾
+	 * 
+	 * @param src
+	 *            byte数组
+	 * @param start
+	 *            开始位置
+	 * @return hex字符串
+	 */
 	public static String toHex(byte[] src, int start) {
 		if (src == null || src.length == 0) {
 			return null;
@@ -30,6 +40,18 @@ public class ByteUtil {
 		return toHex(src, start, src.length);
 	}
 
+	/**
+	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"
+	 * 默认转换出来的字符串全部为小写 从开始位置到结束位置
+	 * 
+	 * @param src
+	 *            byte数组
+	 * @param start
+	 *            开始位置
+	 * @param end
+	 *            结束位置
+	 * @return hex字符串
+	 */
 	public static String toHex(byte[] src, int start, int end) {
 		if (src == null || src.length == 0) {
 			return null;
@@ -49,12 +71,15 @@ public class ByteUtil {
 
 	/**
 	 * 将一个int值的前byteLength个字节转换为十六进制的字符，比如0xab转换成"ab"
-	 * @param src 要转换的int值
-	 * @param byteLength 转换前几个字节，范围[1,4]，否则会返回null值
-	 * @return
+	 * 
+	 * @param src
+	 *            要转换的int值
+	 * @param byteLength
+	 *            转换前几个字节，范围[1,4]，否则会返回null值
+	 * @return hex字符串
 	 */
 	public static String toHex(int src, int byteLength) {
-		switch(byteLength) {
+		switch (byteLength) {
 		case 1:
 			return String.format("%02x", src & 0xff);
 		case 2:
@@ -66,16 +91,16 @@ public class ByteUtil {
 		}
 		return null;
 	}
-	
+
 	private static final String HEX_STR = "0123456789abcdefABCDEF";
 
 	/**
-	 * 将16进制的字符串转换为byte[]，如"11aabbcc"转换成byte[]{0x11, 0xaa, 0xbb, 0xcc}<br/>
+	 * 将16进制的字符串转换为byte[]，如"11aabbcc"转换成byte[]{0x11, 0xaa, 0xbb, 0xcc}
 	 * 函数会过滤字符串中不合法的字符
 	 * 
 	 * @param hex
 	 *            16进制的字符串，不区分大小写
-	 * @return
+	 * @return byte数组结果
 	 */
 	public static byte[] fromHex(String hex) {
 		if (hex == null || hex.length() == 0) {
@@ -98,7 +123,7 @@ public class ByteUtil {
 	}
 
 	/**
-	 * 将short转成2个字节byte[]<br/>
+	 * 将short转成2个字节byte[]
 	 * 如(short)0xabcd转换成byte[]{0xab, 0xcd}
 	 * 
 	 * @param s
@@ -123,7 +148,8 @@ public class ByteUtil {
 	 * 将int转换为4个字节byte[]数组
 	 * 
 	 * @param i
-	 * @return
+	 *            integer数据
+	 * @return byte数组，共四个字节
 	 */
 	public static byte[] fromInt(int i) {
 		byte[] ret = new byte[4];
@@ -134,18 +160,32 @@ public class ByteUtil {
 		return ret;
 	}
 
+	/**
+	 * 将四个byte组合成一个int值
+	 * 
+	 * @param b1
+	 *            byte1
+	 * @param b2
+	 *            byte2
+	 * @param b3
+	 *            byte3
+	 * @param b4
+	 *            byte4
+	 * @return int值结果
+	 */
 	public static int toInt(byte b1, byte b2, byte b3, byte b4) {
 		int ret = (((b1 & 0xff) << 24) | ((b2 & 0xff) << 16) | ((b3 & 0xff) << 8) | (b4 & 0xff));
 		return ret;
 	}
 
 	/**
-	 * 将多个参数组合成一个byte[]<br/>
-	 * 现在支持String、Byte、Short、Integer、Long、byte[]<br/>
+	 * 将多个参数组合成一个byte[]
+	 * 现在支持String、Byte、Short、Integer、Long、byte[]
 	 * <b>注意：Byte、Short、Integer、Long都会被当做byte处理</b>
 	 * 
 	 * @param args
-	 * @return
+	 *            可以包括byte、int、short、long、byte[]、String
+	 * @return byte数组结果
 	 */
 	public static byte[] combine(Object... args) {
 		if (args == null || args.length == 0) {
