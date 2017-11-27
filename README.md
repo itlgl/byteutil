@@ -4,6 +4,10 @@
 
 [![Build Status](https://www.travis-ci.org/itlgl/byteutil.svg?branch=master)](https://www.travis-ci.org/itlgl/byteutil)
 
+## 如何使用
+
+[doc文档](http://itlgl.com/byteutil/apidocs/)
+
 ## 依赖配置
 
 ### maven配置
