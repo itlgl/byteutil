@@ -13,7 +13,7 @@ public class ByteUtilTest {
 		String hex = "010aaabbff";
 		String hexResult = ByteUtil.toHex(bs);
 		Assert.assertEquals(hex, hexResult);
-		
+
 		String hex2 = "bbff";
 		String hexResult2 = ByteUtil.toHex(bs, bs.length - 2);
 		Assert.assertEquals(hex2, hexResult2);
@@ -42,7 +42,34 @@ public class ByteUtilTest {
 		String hexResult7 = ByteUtil.toHex(value7, 4);
 		Assert.assertEquals(hex7, hexResult7);
 	}
-	
+
+	@Test
+	public void toHexPerformanceTest() {
+		long startTime = System.currentTimeMillis();
+		byte[] bs = new byte[10000];
+		for (int i = 0; i < bs.length; i++) {
+			bs[i] = (byte) (i & 0xff);
+		}
+		String hex = ByteUtil.toHex(bs);
+		long endTime = System.currentTimeMillis();
+		//System.out.println("hex=" + hex);
+		System.out.println("cost time=" + (endTime - startTime) + "ms");
+		// 10000个字节1ms
+
+		// --- old src ---
+		startTime = System.currentTimeMillis();
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0, len = bs.length; i < len; i++) {
+			builder.append(String.format("%02x", bs[i]));
+		}
+		String hex2 = builder.toString();
+		endTime = System.currentTimeMillis();
+		//System.out.println("old hex=" + hex2);
+		System.out.println("old cost time=" + (endTime - startTime) + "ms");
+		// 10000个字节41ms
+		// --- old src end ---
+	}
+
 	@Test
 	public void fromHexTest() {
 		byte[] bs = new byte[]{0x01, 0x0a, (byte)0xaa, (byte)0xbb, (byte)0xff};

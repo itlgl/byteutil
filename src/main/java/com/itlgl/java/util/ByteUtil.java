@@ -1,8 +1,25 @@
 package com.itlgl.java.util;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 public class ByteUtil {
+
+	private static final char[] ENCODING_TABLE = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	private static final byte[] DECODING_TABLE = new byte[128];
+
+	static {
+		Arrays.fill(DECODING_TABLE, (byte) 0xff);
+		for (int i = '0'; i <= '9'; i++) {
+			DECODING_TABLE[i] = (byte) (i - '0');
+		}
+		for (char i = 'a'; i <= 'f'; i++) {
+			DECODING_TABLE[i] = (byte) (i - 'a' + 0xa);
+		}
+		for (char i = 'A'; i <= 'F'; i++) {
+			DECODING_TABLE[i] = (byte) (i - 'a' + 0xa);
+		}
+	}
 
 	/**
 	 * 将byte[]数据转换为16进制的字符串，如byte[]{0x11, 0xaa, 0xbb, 0xcc}转换成"11aabbcc"
@@ -16,11 +33,13 @@ public class ByteUtil {
 		if (src == null || src.length == 0) {
 			return null;
 		}
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0, len = src.length; i < len; i++) {
-			builder.append(String.format("%02x", src[i]));
+		char[] chars = new char[src.length * 2];
+		for (int i = 0; i < src.length; i++) {
+			int v = src[i] & 0xff;
+			chars[i * 2] = ENCODING_TABLE[v >>> 4];
+			chars[i * 2 + 1] = ENCODING_TABLE[v & 0xf];
 		}
-		return builder.toString();
+		return new String(chars);
 	}
 
 	/**
@@ -57,16 +76,24 @@ public class ByteUtil {
 			return null;
 		}
 		if (start > end) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(start + " > " + end);
 		}
-		if (start < 0 || end > src.length) {
-			throw new ArrayIndexOutOfBoundsException();
+		if(start < 0) {
+			throw new ArrayIndexOutOfBoundsException(start + " < 0");
 		}
-		StringBuilder builder = new StringBuilder();
-		for (int i = start; i < end; i++) {
-			builder.append(String.format("%02x", src[i]));
+		if(start > src.length) {
+			throw new ArrayIndexOutOfBoundsException(start + " > " + src.length);
 		}
-		return builder.toString();
+		if (end > src.length) {
+			throw new ArrayIndexOutOfBoundsException(start + " > " + src.length);
+		}
+		char[] chars = new char[(end - start) * 2];
+		for (int i = 0; i < end - start; i++) {
+			int v = src[i + start] & 0xff;
+			chars[i * 2] = ENCODING_TABLE[v >>> 4];
+			chars[i * 2 + 1] = ENCODING_TABLE[v & 0xf];
+		}
+		return new String(chars);
 	}
 
 	/**
@@ -92,8 +119,6 @@ public class ByteUtil {
 		return null;
 	}
 
-	private static final String HEX_STR = "0123456789abcdefABCDEF";
-
 	/**
 	 * 将16进制的字符串转换为byte[]，如"11aabbcc"转换成byte[]{0x11, 0xaa, 0xbb, 0xcc}
 	 * 函数会过滤字符串中不合法的字符
@@ -109,7 +134,7 @@ public class ByteUtil {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0, len = hex.length(); i < len; i++) {
 			char c = hex.charAt(i);
-			if (HEX_STR.indexOf(c) != -1) {
+			if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F')) {
 				builder.append(c);
 			}
 		}
@@ -117,7 +142,9 @@ public class ByteUtil {
 		int strLength = hexSrc.length();
 		byte[] result = new byte[strLength / 2];
 		for (int i = 0, len = strLength / 2; i < len; i++) {
-			result[i] = (byte) Integer.parseInt(hexSrc.substring(i * 2, i * 2 + 2), 16);
+			byte b1 = DECODING_TABLE[hexSrc.charAt(i * 2)];
+			byte b2 = DECODING_TABLE[hexSrc.charAt(i * 2 + 1)];
+			result[i] = (byte) ((b1 << 4) | b2);
 		}
 		return result;
 	}

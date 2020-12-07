@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.itlgl'
+version '0.0.5'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+apply from: 'https://gitee.com/itlgl/gradle-mvn-push/raw/v1.0.3/gradle-mvn-push-java.gradle'
