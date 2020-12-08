@@ -17,7 +17,7 @@ public class ByteUtil {
 			DECODING_TABLE[i] = (byte) (i - 'a' + 0xa);
 		}
 		for (char i = 'A'; i <= 'F'; i++) {
-			DECODING_TABLE[i] = (byte) (i - 'a' + 0xa);
+			DECODING_TABLE[i] = (byte) (i - 'A' + 0xa);
 		}
 	}
 

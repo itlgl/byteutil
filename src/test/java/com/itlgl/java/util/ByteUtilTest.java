@@ -77,7 +77,7 @@ public class ByteUtilTest {
 		byte[] bResult = ByteUtil.fromHex(hex);
 		Assert.assertArrayEquals(bs, bResult);
 		
-		String hex2 = "01 0a	a yyuu abbff";
+		String hex2 = "01 0A	a yyuu abbff";
 		bResult = ByteUtil.fromHex(hex2);
 		Assert.assertArrayEquals(bs, bResult);
 	}
