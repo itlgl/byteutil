@@ -17,14 +17,14 @@
 <dependency>
     <groupId>com.itlgl</groupId>
     <artifactId>byteutil</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
 </dependency>
 ```
 
 ### gradle配置
 
 ```gradle
-compile 'com.itlgl:byteutil:0.0.6'
+compile 'com.itlgl:byteutil:0.0.7'
 ```
 
 Android Studio中需要额外增加配置
@@ -50,7 +50,7 @@ Error:Execution failed for task ':app:transformResourcesWithMergeJavaResForDebug
 
 ## 直接下载jar包
 
-[byteutil-0.0.6.jar](http://search.maven.org/remotecontent?filepath=com/itlgl/byteutil/0.0.6/byteutil-0.0.6.jar)
+[byteutil-0.0.7.jar](http://search.maven.org/remotecontent?filepath=com/itlgl/byteutil/0.0.7/byteutil-0.0.7.jar)
 
 ## 关于我
 
