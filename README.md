@@ -3,6 +3,7 @@
 有关byte数据处理的工具类
 
 [![Build Status](https://www.travis-ci.org/itlgl/byteutil.svg?branch=master)](https://www.travis-ci.org/itlgl/byteutil)
+![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.itlgl/byteutil/badge.svg)
 
 ## 如何使用
 
