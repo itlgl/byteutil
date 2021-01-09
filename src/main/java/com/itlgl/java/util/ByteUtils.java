@@ -3,7 +3,7 @@ package com.itlgl.java.util;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
-public class ByteUtil {
+public class ByteUtils {
 
 	private static final char[] ENCODING_TABLE = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 	private static final byte[] DECODING_TABLE = new byte[128];
