@@ -59,4 +59,32 @@ public class TlvUtilsTest {
         Assert.assertArrayEquals(tlvList.get(1).value, tlvValue02);
         Assert.assertArrayEquals(tlvList.get(2).value, tlvValue03);
     }
+
+    @Test
+    public void testLongData() {
+        // 01 8188 xxxx
+        byte[] longData1 = new byte[0x88 + 3];
+        longData1[0] = 0x01;
+        longData1[1] = (byte) 0x81;
+        longData1[2] = (byte) 0x88;
+        longData1[3] = (byte) 0x01;
+
+        // 01 828101 xxxx
+        byte[] longData2 = new byte[0x8101 + 4];
+        longData2[0] = 0x01;
+        longData2[1] = (byte) 0x82;
+        longData2[2] = (byte) 0x81;
+        longData2[3] = (byte) 0x01;
+        longData2[4] = (byte) 0x01;
+
+        TlvUtils tlv1 = new TlvUtils(longData1);
+        TlvUtils.TagValue tagValue1 = tlv1.next();
+        Assert.assertEquals(tagValue1.value.length, 0x88);
+        Assert.assertEquals(tagValue1.value[0] & 0xff, 0x01);
+
+        TlvUtils tlv2 = new TlvUtils(longData2);
+        TlvUtils.TagValue tagValue2 = tlv2.next();
+        Assert.assertEquals(tagValue2.value.length, 0x8101);
+        Assert.assertEquals(tagValue2.value[0] & 0xff, 0x01);
+    }
 }

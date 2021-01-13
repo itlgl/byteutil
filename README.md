@@ -17,14 +17,14 @@
 <dependency>
     <groupId>com.itlgl</groupId>
     <artifactId>byteutil</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 
 ### gradle配置
 
 ```gradle
-compile 'com.itlgl:byteutil:0.1.0'
+implementation 'com.itlgl:byteutil:0.1.2'
 ```
 
 Android Studio中需要额外增加配置
