@@ -79,7 +79,7 @@ public class TlvUtils {
         }
         byte[] bytes = Arrays.copyOfRange(data, index + 1, index + 1 + len);
         index += 1 + len;
-        return new BigInteger(bytes).intValue();
+        return new BigInteger(bytes).abs().intValue();
     }
 
     private byte[] nextValue(int len) {
